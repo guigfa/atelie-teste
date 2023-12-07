@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { passwordConfirmationValidator } from '../shared/validators/validators';
-import { SendFormService } from '../shared/services/send-form.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
-import { ConfirmationModalComponent } from '../shared/modal/confirmation-modal/confirmation-modal.component';
-import { SubjectService } from '../shared/services/subjects.service';
 import { catchError, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
+import { passwordConfirmationValidator } from 'src/app/shared/validators/validators';
+import { SendFormService } from 'src/app/shared/services/send-form.service';
+import { SubjectService } from 'src/app/shared/services/subjects.service';
+import { ConfirmationModalComponent } from 'src/app/shared/modal/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-login-register',
