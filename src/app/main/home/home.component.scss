@@ -1,0 +1,65 @@
+html, span, button {
+    font-family: 'Lato', sans-serif;
+}
+
+button {
+    font-weight: 700;
+}
+
+.main {
+    background-image: url('background.png') !important;
+}
+
+.footer {
+    background-color: #E8A612;
+    color: white;
+}
+
+.main-image {
+    width: 60%;
+    height: 60%;
+}
+
+.campaign {
+    padding: 2rem 0;
+    background-image: url('background-cinza.png');
+}
+
+main {
+    padding: 1rem 0;
+    background-image: url('background-marrom.png');
+}
+
+.campaign-text {
+    padding-top: 2rem;
+    color: #868686;
+    font-size: 10.5px;
+    word-wrap: break-word;
+}
+.campaign-title {
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+@media (max-width: 794px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .resp-campaign {
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buttons {
+        padding-top: 2rem;
+    }
+}

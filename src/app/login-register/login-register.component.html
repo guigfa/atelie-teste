@@ -1,0 +1,147 @@
+<ng-container *ngIf="!login" class="h-100 container">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div
+      class="second-container d-flex flex-column align-items-center justify-content-center"
+    >
+      <span class="font-weight-bold fs-2 pt-5 pb-4" style="font-weight: 700"
+        >CADASTRE-SE</span
+      >
+      <span class="fs-4 text-center text-fill"
+        >Preencha os campos abaixo para validar sua participação <br />na
+        campanha e concorrer aos prêmios.</span
+      >
+    </div>
+    <div
+      [formGroup]="userForm"
+      class="d-flex gap-2 flex-column align-items-center justify-content-center form"
+    >
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="userForm.get('name')?.hasError('required')">
+          Campo obrigatório!
+        </mat-error>
+      </mat-form-field>
+      <div class="d-flex gap-4 form-field">
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error
+            *ngIf="
+              userForm.get('email')?.hasError('required') &&
+              !userForm.get('email')?.hasError('email')
+            "
+          >
+            Campo obrigatório!
+          </mat-error>
+          <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+            Digite um e-mail válido!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="tax_id" pattern="[0-9]{11}" />
+          <mat-error *ngIf="userForm.get('tax_id')?.hasError('required')">
+            Campo obrigatório!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="d-flex gap-4 form-field">
+        <mat-form-field appearance="fill">
+          <mat-label>Digite sua senha</mat-label>
+          <input matInput formControlName="password" type="password" />
+          <mat-error *ngIf="userForm.get('password')?.hasError('required')">
+            Campo obrigatório!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirme sua senha</mat-label>
+          <input
+            matInput
+            formControlName="password_confirmation"
+            type="password"
+          />
+          <mat-error
+            *ngIf="
+              userForm
+                .get('password_confirmation')
+                ?.hasError('errorConfirmationPassword')
+            "
+          >
+            As senhas não são idênticas
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="d-flex gap-4 form-field">
+        <mat-form-field appearance="fill">
+          <mat-label>Empresa</mat-label>
+          <input matInput formControlName="company" />
+          <mat-error *ngIf="userForm.get('company')?.hasError('required')">
+            Campo obrigatório!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Classificação</mat-label>
+          <mat-select formControlName="segment">
+            <mat-option
+              *ngFor="let classifier of classifiers"
+              [value]="classifier"
+            >
+              {{ classifier }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="userForm.get('segment')?.hasError('required')">
+            Campo obrigatório!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="sendData()" [disabled]="!userForm.valid">
+        ENVIAR
+      </button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="login">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div
+      class="second-container d-flex flex-column align-items-center justify-content-center"
+    >
+      <span class="font-weight-bold fs-2 pt-5 pb-4">LOGIN</span>
+    </div>
+    <div
+      [formGroup]="loginForm"
+      class="d-flex gap-2 flex-column align-items-center justify-content-center w-50 form"
+    >
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>CPF</mat-label>
+        <input
+          matInput
+          #inputCpf
+          maxlength="11"
+          formControlName="tax_id"
+          mask="000000000"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Digite sua senha</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error *ngIf="userForm.get('password')?.hasError('required')">
+          Campo obrigatório!
+        </mat-error>
+      </mat-form-field>
+      <div class="d-flex justify-content-between w-100 pb-5 login-buttons">
+        <span role="button" class="messages" (click)="handleLogin(false)"
+          >Ainda não é cadastrado?</span
+        >
+        <span role="button" class="messages">Esqueceu sua senha?</span>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!loginForm.valid"
+      >
+        <span> ENTRAR </span>
+      </button>
+    </div>
+  </div>
+</ng-container>

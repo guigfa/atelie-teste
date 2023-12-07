@@ -1,0 +1,67 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '@angular/material/theming';
+  
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Lato', sans-serif !important;  }
+$md-mcgpalette0: (
+    50 : #fcf4e3,
+    100 : #f8e4b8,
+    200 : #f4d389,
+    300 : #efc159,
+    400 : #ebb336,
+    500 : #e8a612,
+    600 : #e59e10,
+    700 : #e2950d,
+    800 : #de8b0a,
+    900 : #d87b05,
+    A100 : #ffffff,
+    A200 : #ffe7ce,
+    A400 : #ffce9b,
+    A700 : #ffc181,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$custom-app-primary: mat-palette($md-mcgpalette0, 500);
+$custom-app-secondary: mat-palette($mat-blue);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $custom-app-warn);
+
+@include angular-material-theme($custom-theme);
+
+::ng-deep .mat-mdc-input-element, mat-label, ::ng-deep .mat-mdc-select-value-text {
+    color: #FEFEFE !important;
+}
+
+mat-error {
+    color: #e8a612 !important;
+}
+
+mat-form-field {
+    appearance: none !important;
+}
+
+button span {
+    color: white;
+}
+
+.mat-form-field {
+    border: none !important;
+  }
+  
